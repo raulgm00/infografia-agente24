@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agente 24: Auditoría Aduanal con IA</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="antialiased" id="top">
+    <nav
+      class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md shadow-md p-4 transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="text-2xl font-bold text-blue-600 flex items-center gap-2">
+          <span class="text-3xl">🛡️</span> AGENTE 24
+        </div>
+        <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+          <a href="#problema" class="nav-link">El Problema</a>
+          <a href="#solucion" class="nav-link">Solución</a>
+          <a href="#confianza" class="nav-link">Confianza</a>
+          <a href="#finanzas" class="nav-link">Finanzas</a>
+          <a href="#roadmap" class="nav-link">Roadmap</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="slide-section parallax bg-hero text-white">
+      <div
+        class="max-w-5xl mx-auto text-center px-4"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
+        <div class="transform -translate-y-12">
+          <div
+            class="inline-block bg-blue-600 text-white text-sm font-bold px-4 py-1 rounded-full mb-6 tracking-wide uppercase"
+          >
+            Nueva Era en Aduanas
+          </div>
+          <h1
+            class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg"
+          >
+            Auditoría Forense <br />
+            con <span class="text-blue-400">Inteligencia Artificial</span>
+          </h1>
+          <p
+            class="text-xl md:text-3xl mb-10 opacity-90 font-light max-w-3xl mx-auto drop-shadow-md"
+          >
+            "Detectamos lo que el ojo humano ignora antes de que se convierta en
+            multa."
+          </p>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-800 mt-12 max-w-4xl mx-auto"
+          >
+            <div
+              class="bg-white/95 backdrop-blur rounded-xl p-6 shadow-xl transform hover:scale-105 transition-all duration-300 floating"
+              style="animation-delay: 0s"
+            >
+              <div class="text-4xl mb-2">🎯</div>
+              <div class="font-bold text-lg">Precisión IA</div>
+            </div>
+            <div
+              class="bg-white/95 backdrop-blur rounded-xl p-6 shadow-xl transform hover:scale-105 transition-all duration-300 floating"
+              style="animation-delay: 1s"
+            >
+              <div class="text-4xl mb-2">🚀</div>
+              <div class="font-bold text-lg">Análisis en Segundos</div>
+            </div>
+            <div
+              class="bg-white/95 backdrop-blur rounded-xl p-6 shadow-xl transform hover:scale-105 transition-all duration-300 floating"
+              style="animation-delay: 2s"
+            >
+              <div class="text-4xl mb-2">🛡️</div>
+              <div class="font-bold text-lg">Seguridad Jurídica</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#problema" class="nav-next-btn btn-light">
+        <span>El Problema</span>
+        <div class="icon-circle">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
+        </div>
+      </a>
+    </header>
+
+    <section id="problema" class="slide-section bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            El Problema Actual: "El Salvaje Oeste"
+          </h2>
+          <div class="w-24 h-1 bg-blue-600 mx-auto rounded"></div>
+          <p class="text-xl text-gray-600 mt-6 max-w-4xl mx-auto">
+            La validación aduanera ("Glosa") es un proceso manual propenso a
+            errores humanos costosos. Una sola discrepancia puede derivar en
+            multas millonarias.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="card p-8 bg-white" data-aos="fade-right">
+            <h3 class="text-2xl font-bold mb-6 text-center text-blue-700">
+              Panorama de Herramientas
+            </h3>
+            <div class="chart-container">
+              <canvas id="marketChart"></canvas>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div
+              class="card p-6 border-l-8 border-yellow-500 bg-white"
+              data-aos="fade-left"
+            >
+              <h4 class="font-bold text-xl mb-2">⚠️ El Riesgo Humano</h4>
+              <p class="text-gray-600">
+                Validación manual lenta. Errores de "dedazo" invisibles al ojo
+                humano.
+              </p>
+            </div>
+            <div
+              class="card p-6 border-l-8 border-red-500 bg-white"
+              data-aos="fade-left"
+              data-aos-delay="100"
+            >
+              <h4 class="font-bold text-xl mb-2">🚫 ERPs Obsoletos</h4>
+              <p class="text-gray-600">
+                Almacenes de datos costosos, no auditores inteligentes.
+              </p>
+            </div>
+            <div
+              class="card p-6 border-l-8 border-blue-500 bg-white"
+              data-aos="fade-left"
+              data-aos-delay="200"
+            >
+              <h4 class="font-bold text-xl mb-2">🤖 IA Genérica</h4>
+              <p class="text-gray-600">Copilot sin contexto "alucina" datos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#solucion-intro" class="nav-next-btn btn-dark">
+        <span>La Solución</span>
+        <div class="icon-circle">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <section
+      id="solucion-intro"
+      class="slide-section parallax bg-solution text-white"
+      style="justify-content: center"
+    >
+      <div class="text-center px-4 max-w-4xl mx-auto" data-aos="zoom-in">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">
+          La Solución Inteligente
+        </h2>
+        <p class="text-xl md:text-2xl opacity-90">
+          Agente 24 combina lo mejor de ambos mundos: Velocidad y Estructura.
+        </p>
+      </div>
+
+      <a href="#solucion-detalles" class="nav-next-btn btn-light">
+        <span>Estrategia</span>
+        <div class="icon-circle">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <section id="solucion-detalles" class="slide-section bg-white">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Nuestra Estrategia: Dos Líneas de Ataque
+          </h2>
+          <div class="w-24 h-1 bg-green-500 mx-auto rounded"></div>
+          <p class="text-xl text-gray-600 mt-6 max-w-3xl mx-auto">
+            Desarrollamos Agente 24 en paralelo para mitigar riesgos y acelerar
+            la venta.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="card overflow-hidden group" data-aos="flip-left">
+            <div
+              class="bg-blue-600 p-8 text-white text-center group-hover:bg-blue-700 transition-colors"
+            >
+              <div class="text-6xl mb-4">🚀</div>
+              <h3 class="text-3xl font-bold">Línea 1: El Piloto</h3>
+              <div class="text-blue-200 font-semibold mt-1">AGENTE GEMA</div>
+            </div>
+            <div class="p-8">
+              <p class="text-green-600 font-bold mb-4">
+                ✅ Estado: Funcional al 100%
+              </p>
+              <ul class="space-y-4 text-gray-700">
+                <li>➜ Asistente inteligente entrenado expertamente.</li>
+                <li>➜ Validación inmediata y demostraciones.</li>
+                <li>➜ Genera el "efecto wow" instantáneo.</li>
+                <li>➜ <strong>Bajo costo operativo:</strong> ~$389 MXN/mes.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card overflow-hidden group" data-aos="flip-right">
+            <div
+              class="bg-gray-800 p-8 text-white text-center group-hover:bg-gray-900 transition-colors"
+            >
+              <div class="text-6xl mb-4">🏢</div>
+              <h3 class="text-3xl font-bold">Línea 2: SaaS Pro</h3>
+              <div class="text-gray-400 font-semibold mt-1">PLATAFORMA WEB</div>
+            </div>
+            <div class="p-8">
+              <p class="text-orange-500 font-bold mb-4">
+                🚧 Estado: En Diseño de Arquitectura
+              </p>
+              <ul class="space-y-4 text-gray-700">
+                <li>➜ Web App robusta (React + Google Cloud).</li>
+                <li>➜ Gestión masiva e historial de auditorías.</li>
+                <li>➜ Reportes PDF oficiales y facturación.</li>
+                <li>➜ <strong>Escalable:</strong> Múltiples usuarios.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#confianza" class="nav-next-btn btn-dark">
+        <span>Confianza</span>
+        <div class="icon-circle">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <section id="confianza" class="slide-section bg-gray-900 text-white">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div data-aos="fade-right">
+            <div
+              class="inline-block bg-yellow-500 text-black font-bold px-3 py-1 rounded mb-4 text-xs uppercase tracking-widest"
+            >
+              Human-in-the-loop
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              La IA no es magia,<br />
+              es <span class="text-blue-400">Probabilidad.</span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-6">
+              Agente 24 está entrenada para alcanzar una certeza del
+              <strong>99.9%</strong>. Sin embargo, en el comercio exterior, el
+              riesgo cero no existe.
+            </p>
+            <div class="bg-gray-800 p-6 rounded-l border-l-4 border-yellow-500">
+              <p class="text-gray-200 italic">
+                "Nuestra herramienta hace el trabajo pesado (lectura masiva),
+                para que el experto humano se enfoque únicamente en ese
+                <span
+                  class="text-white font-bold decoration-yellow-500 underline"
+                  >0.1% crítico</span
+                >
+                donde se requiere criterio legal."
+              </p>
+            </div>
+          </div>
+
+          <div class="relative" data-aos="zoom-in">
+            <div class="flex justify-center items-center relative">
+              <svg viewBox="0 0 36 36" class="w-64 h-64 text-blue-600 block">
+                <path
+                  class="text-gray-700"
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  class="text-blue-500 drop-shadow-[0_0_15px_rgba(37,99,235,0.8)]"
+                  stroke-dasharray="99.9, 100"
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+              <div class="absolute text-center">
+                <span class="block text-5xl font-bold text-white">99.9%</span>
+                <span class="text-sm text-gray-400 uppercase tracking-widest"
+                  >Certeza IA</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="absolute -bottom-4 right-10 bg-white text-gray-900 p-4 rounded-xl shadow-lg max-w-xs transform rotate-2 hover:rotate-0 transition-transform duration-300"
+            >
+              <div class="font-bold text-red-600 mb-1">⚠️ El 0.1% Restante</div>
+              <p class="text-xs leading-relaxed">
+                Depende de la calidad del documento escaneado y la ambigüedad de
+                la ley.
+                <strong>Aquí entras tú.</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#finanzas" class="nav-next-btn btn-light">
+        <span>El Negocio</span>
+        <div class="icon-circle">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <section id="finanzas" class="slide-section bg-blue-50">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-6">
+            Análisis Financiero & ROI
+          </h2>
+          <div class="w-24 h-1 bg-green-500 mx-auto rounded"></div>
+          <p class="text-xl text-gray-600 mt-6 max-w-3xl mx-auto">
+            La inversión en prevención es mínima comparada con el impacto
+            financiero de una sanción.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+          <div class="lg:col-span-2 card p-8 bg-white" data-aos="zoom-in">
+            <h3 class="text-2xl font-bold mb-8 text-center text-gray-700">
+              Costo Operativo vs. Multa
+            </h3>
+            <div class="chart-container">
+              <canvas id="financeChart"></canvas>
+            </div>
+            <p class="text-xs text-center text-gray-400 mt-4">
+              *Costo operativo real por usuario en cuenta Google One AI.
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <div
+              class="card p-6 bg-white border-l-8 border-green-500 hover:scale-105 transition-transform"
+              data-aos="fade-up"
+            >
+              <div class="text-xs text-green-600 font-bold uppercase mb-2">
+                Inversión Inicial
+              </div>
+              <div class="text-3xl font-bold text-green-900">
+                Capital Intelectual
+              </div>
+              <p class="text-gray-500 mt-2">
+                Tiempo de ingeniería bonificado por Equipo Fundador.
+              </p>
+            </div>
+
+            <div
+              class="card p-6 bg-white border-l-8 border-blue-500 hover:scale-105 transition-transform"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="text-xs text-blue-600 font-bold uppercase mb-2">
+                Costo Operativo Mensual
+              </div>
+              <div class="flex items-baseline gap-1">
+                <div class="text-3xl font-bold text-blue-900">~$389 MXN</div>
+                <div class="text-sm text-gray-500">/usuario</div>
+              </div>
+              <p class="text-gray-500 mt-2 text-sm">
+                Licencia Google One AI (Infraestructura Cliente).
+              </p>
+            </div>
+
+            <div
+              class="card p-6 bg-white border-l-8 border-red-600 shadow-xl hover:scale-105 transition-transform"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="text-xs text-red-600 font-bold uppercase mb-2">
+                ROI para el Cliente
+              </div>
+              <div class="text-4xl font-bold text-red-700">$18,000+ MXN</div>
+              <p class="text-gray-500 mt-2">
+                Evitar UNA sola multa paga la suscripción de 4 años.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#roadmap" class="nav-next-btn btn-dark">
+        <span>El Plan</span>
+        <div class="icon-circle">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <section id="roadmap" class="slide-section bg-white">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Roadmap de Ejecución
+          </h2>
+          <p class="text-xl text-gray-600">
+            Plan estratégico de 6 meses para el dominio del mercado.
+          </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto relative pl-8">
+          <div class="absolute left-8 top-0 bottom-0 w-1 bg-gray-200"></div>
+
+          <div class="relative pl-16 mb-12" data-aos="fade-left">
+            <div
+              class="absolute left-3 top-1 w-7 h-7 bg-blue-600 rounded-full border-4 border-white shadow-md z-10"
+            ></div>
+            <div class="card p-6 border-t-4 border-blue-600 shadow-lg">
+              <h3 class="text-xl font-bold text-blue-800">
+                Hoy: Validación Técnica
+              </h3>
+              <p class="text-lg text-gray-600 mt-2">
+                Script Maestro funcional. Prototipo Gema listo para
+                demostraciones técnicas y validación lógica.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="relative pl-16 mb-12"
+            data-aos="fade-left"
+            data-aos-delay="100"
+          >
+            <div
+              class="absolute left-3 top-1 w-7 h-7 bg-blue-400 rounded-full border-4 border-white shadow-md z-10"
+            ></div>
+            <div class="card p-6 border-t-4 border-blue-400 shadow-lg">
+              <h3 class="text-xl font-bold text-blue-600">
+                Mes 1: Pruebas Piloto
+              </h3>
+              <p class="text-lg text-gray-600 mt-2">
+                Validación con documentos reales del Stakeholder principal.
+                Ajuste fino de reglas de negocio y prompts.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="relative pl-16 mb-12"
+            data-aos="fade-left"
+            data-aos-delay="200"
+          >
+            <div
+              class="absolute left-3 top-1 w-7 h-7 bg-yellow-500 rounded-full border-4 border-white shadow-md z-10"
+            ></div>
+            <div class="card p-6 border-t-4 border-yellow-500 shadow-lg">
+              <h3 class="text-xl font-bold text-yellow-700">
+                Mes 2: Validación de Mercado
+              </h3>
+              <p class="text-lg text-gray-600 mt-2">
+                Cierre de la primera venta/suscripción "Early Adopter".
+                Validación del modelo de precios y primer ingreso.
+              </p>
+            </div>
+          </div>
+
+          <div class="relative pl-16" data-aos="fade-left" data-aos-delay="300">
+            <div
+              class="absolute left-3 top-1 w-7 h-7 bg-green-500 rounded-full border-4 border-white shadow-md z-10"
+            ></div>
+            <div
+              class="card p-6 border-t-4 border-green-500 bg-green-50 shadow-lg"
+            >
+              <h3 class="text-xl font-bold text-green-700">
+                Mes 3-6: Desarrollo SaaS Pro
+              </h3>
+              <p class="text-lg text-gray-600">
+                Construcción de la plataforma web robusta (Línea 2) financiada
+                con los primeros ingresos o capital semilla.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#equipo" class="nav-next-btn btn-dark">
+        <span>El Equipo</span>
+        <div class="icon-circle">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <section id="equipo" class="slide-section parallax bg-team text-white">
+      <div class="max-w-7xl mx-auto px-6 w-full text-center relative z-10">
+        <h2
+          class="text-5xl md:text-6xl font-bold mb-16 drop-shadow-lg"
+          data-aos="zoom-in"
+        >
+          "La unión hace la fuerza"
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          <div
+            class="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20"
+            data-aos="fade-up"
+          >
+            <div class="text-6xl mb-4">👨‍💼</div>
+            <h3 class="font-bold text-2xl">Stakeholders</h3>
+            <p class="text-blue-100 text-sm font-medium uppercase mt-2">
+              Visión de Negocio
+            </p>
+            <p class="mt-4 text-gray-200">
+              Know-How Operativo y red de contactos.
+            </p>
+          </div>
+          <div
+            class="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="text-6xl mb-4">👨‍💻</div>
+            <h3 class="font-bold text-2xl">Tecnología</h3>
+            <p class="text-blue-100 text-sm font-medium uppercase mt-2">
+              Arquitectura & IA
+            </p>
+            <p class="mt-4 text-gray-200">
+              Raúl García &amp; Equipo de Desarrollo Sr.
+            </p>
+          </div>
+          <div
+            class="bg-white/10 backdrop-blur-md p-10 rounded-2xl border border-white/20"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="text-6xl mb-4">🤝</div>
+            <h3 class="font-bold text-2xl">Equity</h3>
+            <p class="text-blue-100 text-sm font-medium uppercase mt-2">
+              Socios Fundadores
+            </p>
+            <p class="mt-4 text-gray-200">
+              Participación basada en resultados y éxito.
+            </p>
+          </div>
+        </div>
+
+        <div class="border-t border-white/30 pt-8">
+          <div class="flex justify-center gap-8 mb-6 items-center">
+            <a
+              href="https://www.linkedin.com/in/raul-ulises-garcia-moreno/"
+              target="_blank"
+              class="hover:text-blue-300 hover:scale-110 transition"
+              ><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                /></svg
+            ></a>
+
+            <a
+              href="https://github.com/raulgm00"
+              target="_blank"
+              class="hover:text-blue-300 hover:scale-110 transition"
+              ><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="https://raululises.dev/"
+              target="_blank"
+              class="hover:text-blue-400 transition-colors"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                />
+              </svg>
+            </a>
+
+            <button
+              id="devTriggerBtn"
+              title="Modo Desarrollador"
+              class="text-gray-500 hover:text-purple-400 hover:scale-125 transition-all duration-300 focus:outline-none"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div class="text-xs text-gray-500 border-t border-gray-800 pt-6 mt-6">
+            &copy; 2025 Agente 24. Desarrollado por
+            <span class="text-blue-400 font-semibold">WeSoft</span>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="dev-pitch"
+      class="slide-section bg-gray-100 border-t-8 border-purple-600 hidden"
+    >
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <div class="mb-12" data-aos="fade-down">
+          <span
+            class="bg-purple-600 text-white px-3 py-1 rounded text-xs font-bold uppercase tracking-widest"
+          >
+            Internal Briefing
+          </span>
+          <h2 class="text-5xl font-black text-gray-900 mt-4 mb-4">
+            Propuesta al Equipo Fundador
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            La realidad financiera y la oportunidad técnica.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+          <div
+            class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-gray-400"
+            data-aos="fade-up"
+            data-aos-delay="0"
+          >
+            <div class="text-4xl mb-4">🌑</div>
+            <h3 class="font-bold text-xl mb-3 text-gray-800">
+              La Realidad Actual
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+              No contamos con inversión semilla líquida. No hay sueldos
+              iniciales. Estamos en fase <strong>Bootstrap</strong> puro.
+            </p>
+            <ul class="text-xs text-gray-500 space-y-2">
+              <li class="flex items-center gap-2">❌ Sin nómina mensual.</li>
+              <li class="flex items-center gap-2">❌ Sin oficinas físicas.</li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-purple-50 p-8 rounded-xl shadow-lg border-t-4 border-purple-600 transform scale-105 z-10"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="text-4xl mb-4">🚀</div>
+            <h3 class="font-bold text-xl mb-3 text-purple-900">
+              La Misión MVP
+            </h3>
+            <p class="text-gray-700 text-sm leading-relaxed mb-4">
+              El objetivo no es ganar dinero hoy, es
+              <strong>crear el producto</strong> que nos permita levantar
+              capital o vender suscripciones en 3 meses.
+            </p>
+            <div class="bg-white p-3 rounded border border-purple-100">
+              <p class="text-xs font-bold text-purple-700 text-center">
+                Entrada = Sweat Equity + Portfolio
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-green-500"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="text-4xl mb-4">💎</div>
+            <h3 class="font-bold text-xl mb-3 text-gray-800">
+              El Upside (Futuro)
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+              Si el MVP valida el mercado, los fundadores técnicos tendrán
+              prioridad en:
+            </p>
+            <ul class="text-xs text-gray-600 space-y-2 font-medium">
+              <li class="flex items-center gap-2">
+                ✅ Equity (Acciones) del SaaS.
+              </li>
+              <li class="flex items-center gap-2">
+                ✅ Primeros sueldos post-inversión.
+              </li>
+              <li class="flex items-center gap-2">✅ Lead Tech Roles.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <button
+      id="backToTop"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+      title="Volver al inicio"
+      class="flex items-center justify-center"
+    >
+      <svg
+        class="w-6 h-6 text-white"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        ></path>
+      </svg>
+    </button>
+
+    <script src="charts.js"></script>
+    <script src="animations.js"></script>
+
+    <script>
+      const devBtn = document.getElementById("devTriggerBtn");
+      const devSection = document.getElementById("dev-pitch");
+
+      // 1. LOGICA DE BOTON: Mostrar/Ocultar al hacer click
+      devBtn.addEventListener("click", function () {
+        devSection.classList.toggle("hidden");
+
+        if (!devSection.classList.contains("hidden")) {
+          // Si se abre: Refresh animaciones, scroll y poner icono morado
+          setTimeout(() => AOS.refresh(), 100);
+          devSection.scrollIntoView({ behavior: "smooth" });
+          devBtn.classList.add("text-purple-500");
+          devBtn.classList.remove("text-gray-500");
+        } else {
+          // Si se cierra manualmente: quitar color
+          devBtn.classList.remove("text-purple-500");
+          devBtn.classList.add("text-gray-500");
+        }
+      });
+
+      // 2. LOGICA DE SCROLL: Ocultar automáticamente si subes al inicio
+      window.addEventListener("scroll", function () {
+        // Si estamos cerca del top (menos de 50px de scroll)
+        if (window.scrollY < 50) {
+          // Y si la sección NO está oculta
+          if (!devSection.classList.contains("hidden")) {
+            // La ocultamos
+            devSection.classList.add("hidden");
+            // Reseteamos el color del botón
+            devBtn.classList.remove("text-purple-500");
+            devBtn.classList.add("text-gray-500");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
