@@ -15,24 +15,27 @@ body {
   overflow-x: hidden;
 }
 
+/* Helper Class */
+.hidden {
+  display: none !important;
+}
+
 /* --- SLIDE SECTIONS --- */
-/* Forces each section to be at least full screen height */
 .slide-section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
-  /* AJUSTE DE ESPACIADO (PADDING) para evitar encimamientos */
-  padding-top: 100px; /* Más aire arriba para que el menú no tape el título */
-  padding-bottom: 180px; /* 180px de espacio libre abajo para que el botón nunca toque el texto */
+  /* Espaciado para móviles y navbar */
+  padding-top: 100px;
+  padding-bottom: 180px;
 }
 
 /* --- NEXT SLIDE BUTTON STYLES --- */
 .nav-next-btn {
   position: absolute;
-  /* AJUSTE MÓVIL: Bajamos ligeramente el botón */
-  bottom: 1rem; 
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -70,10 +73,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Glassmorphism base */
   backdrop-filter: blur(4px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
   animation: scroll-down 2s infinite ease-in-out;
 }
@@ -130,10 +131,9 @@ body {
   background-color: var(--color-card);
   border-radius: 0.5rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
 }
 .card:hover {
-  transform: translateY(-5px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
