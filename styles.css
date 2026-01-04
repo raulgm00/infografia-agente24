@@ -15,6 +15,8 @@ body {
     overflow-x: hidden;
 }
 
+/* styles.css */
+
 /* --- SLIDE SECTIONS --- */
 /* Forces each section to be at least full screen height */
 .slide-section {
@@ -23,14 +25,16 @@ body {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    padding-top: 60px;
-    padding-bottom: 80px; /* Space for the next button */
+    /* AJUSTE MÓVIL: Aumentamos el padding superior e inferior */
+    padding-top: 80px;    /* Antes 60px (más espacio para el navbar fijo) */
+    padding-bottom: 140px; /* Antes 80px (MUCHO más espacio para asegurar que el botón no se encime) */
 }
 
 /* --- NEXT SLIDE BUTTON STYLES --- */
 .nav-next-btn {
     position: absolute;
-    bottom: 2rem;
+    /* AJUSTE MÓVIL: Bajamos ligeramente el botón para pegarlo más al borde inferior */
+    bottom: 1rem; /* Antes 2rem */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -41,6 +45,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+/* ... el resto del CSS sigue igual ... */
 
 .nav-next-btn:hover {
     transform: translateX(-50%) translateY(5px);
