@@ -25,9 +25,9 @@ body {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  /* AJUSTE MÓVIL: Aumentamos el padding superior e inferior */
-  padding-top: 80px; /* Antes 60px (más espacio para el navbar fijo) */
-  padding-bottom: 160px; /* Antes 80px (MUCHO más espacio para asegurar que el botón no se encime) */
+  /* AJUSTE DE ESPACIADO (PADDING) */
+  padding-top: 100px; /* Más aire arriba para que el menú no tape el título */
+  padding-bottom: 180px; /* SOLUCIÓN: 180px de espacio libre abajo para que el botón nunca toque el texto */
 }
 
 /* --- NEXT SLIDE BUTTON STYLES --- */
