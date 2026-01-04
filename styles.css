@@ -15,8 +15,6 @@ body {
   overflow-x: hidden;
 }
 
-/* styles.css */
-
 /* --- SLIDE SECTIONS --- */
 /* Forces each section to be at least full screen height */
 .slide-section {
@@ -25,16 +23,16 @@ body {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  /* AJUSTE DE ESPACIADO (PADDING) */
+  /* AJUSTE DE ESPACIADO (PADDING) para evitar encimamientos */
   padding-top: 100px; /* Más aire arriba para que el menú no tape el título */
-  padding-bottom: 180px; /* SOLUCIÓN: 180px de espacio libre abajo para que el botón nunca toque el texto */
+  padding-bottom: 180px; /* 180px de espacio libre abajo para que el botón nunca toque el texto */
 }
 
 /* --- NEXT SLIDE BUTTON STYLES --- */
 .nav-next-btn {
   position: absolute;
-  /* AJUSTE MÓVIL: Bajamos ligeramente el botón para pegarlo más al borde inferior */
-  bottom: 1rem; /* Antes 2rem */
+  /* AJUSTE MÓVIL: Bajamos ligeramente el botón */
+  bottom: 1rem; 
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -42,11 +40,9 @@ body {
   align-items: center;
   text-decoration: none;
   z-index: 50;
-  z-index: 50;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-/* ... el resto del CSS sigue igual ... */
 
 .nav-next-btn:hover {
   transform: translateX(-50%) translateY(5px);
