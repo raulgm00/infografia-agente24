@@ -258,3 +258,10 @@ body {
   background-color: var(--color-primary);
   transform: translateY(-3px);
 }
+/* --- PARTÍCULAS ANIME.JS (SECCIÓN EQUIPO) --- */
+.team-particle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(59, 130, 246, 0.6); /* Azul semitransparente */
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
